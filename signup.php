@@ -3,10 +3,12 @@ if (isset($_POST['submit'])) {
     require "config.php";
     require "common.php";
     try {
+        // Connect to the database
         $connection = new PDO($dsn, $username, $password, $options);
+        $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $new_user = array(
             "username" => $_POST['username'],
-            "psw" => $_POST['password'],
+            "psw" => $hashedPassword,
         );
         $sql = sprintf(
             "INSERT INTO %s (%s) values (%s)",
@@ -23,7 +25,7 @@ if (isset($_POST['submit'])) {
 }
 ?>
 <?php if (isset($_POST['submit']) && $statement) { ?>
-    <?php echo $_POST['username']; ?> successfully added.
+ <?php echo escape($_POST['username']); ?> successfully added.
 <?php } ?>
 
 <?php include "templates/header.php"; ?>
@@ -33,7 +35,7 @@ if (isset($_POST['submit'])) {
         <input type="text" name="username" id="username">
         <label for="password">password</label>
         <input type="password" name="password" id="password">
-        <input type="submit" name="submit" value="Sign In">
+        <input type="submit" name="submit" value="Sign Up">
     </form>
     <a href="index.php">Back to home</a>
 <?php include "templates/footer.php"; ?>
