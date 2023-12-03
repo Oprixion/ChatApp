@@ -2,3 +2,82 @@ label {
     display: block;
     margin: 5px 0;
 }
+
+body, html {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background-color: #2D3E50;
+  width: 20%;
+  height: 100vh; /* Full height of the viewport */
+  overflow-y: auto; /* Enables vertical scroll if content overflows */
+  position: fixed; /* Fixed positioning relative to the viewport */
+  top: 0;
+  z-index: 5; /* Below the search bar */
+}
+
+.search-bar-container {
+  position: fixed; /* Fixed positioning relative to the viewport */
+  top: 0;
+  width: 20%; /* Set width to match the sidebar */
+  z-index: 10; /* Ensure it stacks above other content */
+  background-color: #2D3E50; /* Match the sidebar color */
+}
+
+.search-box {
+  width: 80%;
+  padding: 10px;
+  margin: 10px auto;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+}
+.search-box::placeholder {
+  color: #999;
+}
+
+.content {
+  background-color: #F39C12;
+  width: 80%;
+  margin-left: 20%; /* Offset for the sidebar width */
+  height: 100vh; /* Full height of the viewport */
+  overflow-y: auto; /* Enables vertical scroll if content overflows */
+  position: relative; /* Relative to the normal document flow */
+}
+
+.header {
+  background-color: #2980B9;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 10px 0;
+  text-align: center;
+  color: white;
+}
+.main {
+  height: 90%; /* Extra height to enable scrolling */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message_container{
+  height: 10%;
+  background-color: aliceblue;
+  
+}
+
+.selected-username{
+  background-color: #2980B9;
+  height: 200px;
+  color: White;
+}

@@ -1,4 +1,5 @@
 <?php include "templates/header.php"; ?>
+<h1>Chatapp</h1>
 <?php
     // Include your database configuration file
     require "config.php";
@@ -22,7 +23,7 @@
             // Check if user exists and password matches
             if ($username && password_verify($_POST['password'], $username['psw'])) {
                 // Redirect to another page
-                header("Location: welcome.php");
+                header("Location: chatscreen.php");
                 exit;
             } else {
                 // Display an error message

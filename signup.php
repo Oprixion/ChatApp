@@ -29,6 +29,7 @@ if (isset($_POST['submit'])) {
 <?php } ?>
 
 <?php include "templates/header.php"; ?>
+    <h1>Chatapp</h1>
     <h2>Sign Up with your Username and Password</h2>
     <form method="post">
         <label for="username">User Name</label>
