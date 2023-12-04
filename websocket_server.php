@@ -34,52 +34,31 @@ class Chat implements MessageComponentInterface {
     public function onMessage(ConnectionInterface $from, $msg) {
         echo "Received a message: $msg\n";
         $data = json_decode($msg, true);
-
+    
         // Check and set username only if it's not already set
         if (!isset($from->username) && isset($data['username'])) {
             $from->username = $data['username'];
             echo "Username set to: " . $from->username . " for connection {$from->resourceId}\n";
             return; // Exit the function after setting the username
         }
-
     
-        // Check if the connection has a username set
-        if (!isset($from->username)) {
-        // Check if the received data contains a username
-            if (isset($data['username'])) {
-                // Assign the username to the connection
-                $from->username = $data['username'];
-                echo "Username set to: " . $from->username . " for connection {$from->resourceId}\n";
-            } else {
-                echo "Username not provided for connection {$from->resourceId}\n";
-                return; // If no username is provided, exit the function
+        // Handle sending messages to specific recipient
+        if (isset($data['sender'], $data['recipient'], $data['message'])) {
+            $targetUsername = $data['recipient'];
+            $broadcastMessage = json_encode([
+                'username' => $data['sender'],
+                'message' => $data['message']
+            ]);
+    
+            foreach ($this->clients as $client) {
+                if (isset($client->username) && $client->username === $targetUsername) {
+                    echo "Sending message to " . $client->username . "\n";
+                    $client->send($broadcastMessage);
+                    break; // Stop the loop once the intended recipient is found
+                }
             }
-        }
-    
-        // Echo when a message is sent from 'snghiem'
-        if ($from->username === 'snghiem') {
-            echo "Message sent from snghiem: " . $data['message'] . "\n";
-        }
-    
-        // Broadcast the message to all connected clients
-        $broadcastMessage = json_encode([
-            'username' => $from->username,
-            'message' => isset($data['message']) ? $data['message'] : ''
-        ]);
-    
-        foreach ($this->clients as $client) {
-            // Check and log the username of each client
-            if (isset($client->username)) {
-                echo "Sending message to " . $client->username . "\n";
-            } else {
-                echo "A client without a username is connected\n";
-            }
-    
-            $client->send($broadcastMessage);
         }
     }
-    
-    
 }
 
 $server = IoServer::factory(

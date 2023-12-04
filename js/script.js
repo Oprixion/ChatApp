@@ -71,29 +71,26 @@ function initializeWebSocket(username) {
     socket.onmessage = function(event) {
       var data = JSON.parse(event.data);
       if (data.username && data.message) {
-          // Assuming you have a div with id 'chatBox' to display messages
-          var chatBox = document.getElementById('chatBox');
-          var messageElement = document.createElement('div');
-          messageElement.textContent = data.username + ": " + data.message;
-          chatBox.appendChild(messageElement);
+          displayMessage(data.username, data.message);
       }
-  };
-  
-  
-
-    // Function to send a message
-    window.sendMessage = function() {
-        var messageInput = document.getElementById('message'); // Assuming input field for message
-        var message = messageInput.value;
-
-        var messageObject = {
-            username: currentUser, // Use the global username variable
-            message: message
-        };
-
-        console.log('Sending message:', messageObject);
-        socket.send(JSON.stringify(messageObject));
     };
+  
+  
+
+    window.sendMessage = function() {
+      var messageInput = document.getElementById('message');
+      var message = messageInput.value;
+      if (selectedUser) {
+          var messageObject = {
+              sender: currentUser,
+              recipient: selectedUser,
+              message: message
+          };
+          console.log('Sending message:', messageObject);
+          socket.send(JSON.stringify(messageObject));
+      }
+    };
+    
 }
 
 // Function to display messages
@@ -103,7 +100,5 @@ function displayMessage(username, message) {
     messageElement.textContent = username + ": " + message;
     chatBox.appendChild(messageElement);
 }
-
-// Rest of your searchUsernames and startChat functions...
 
 
