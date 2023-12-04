@@ -15,20 +15,23 @@ if(isset($_SESSION['user'])) {
 
 <div class="container">
     <div class="sidebar">
-        <div id="welcomeMSG">Welcome, <?php echo htmlspecialchars($username); ?></div>
-        <div class="search-bar-container">
-            <input type="text" id="search-box" class="search-box" placeholder="Search by Username" oninput="searchUsernames()">
-            <div id="results-container"></div>
-            <ul id="selected-username" class="selected-username"></ul>
-        </div>
+      <h1 class='title'>ChatAPP</h1>
+      <div class="search-bar-container">
+          <input type="text" id="search-box" class="search-box" placeholder="Search by Username" oninput="searchUsernames()">
+          <div id="results-container"></div>
+          <ul id="selected-username" class="selected-username"></ul>
+      </div>
+        
     </div>
     <div class="content">
         <div class="header" id="chat-header"></div>
         <div id="chatBox" class="chat-box">
             <!-- Messages will be appended here -->
         </div>
-        <input type="text" id="message" placeholder="Enter message">
-        <input type="button" onclick="sendMessage()" value="Send">
+        <div class = "message-container">
+          <input type="text" id="message" placeholder="Enter message">
+          <input id = "send-btn" type="button" onclick="sendMessage()" value="Send">
+        </div>
     </div>
 </div>
 

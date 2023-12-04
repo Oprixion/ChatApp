@@ -1,6 +1,9 @@
 label {
     display: block;
-    margin: 5px 0;
+}
+
+.title{
+  margin-left: 10%;
 }
 
 body, html {
@@ -13,42 +16,35 @@ body, html {
 }
 
 .sidebar {
-  background-color: #2D3E50;
+  background-color: black;
   width: 20%;
-  height: 100vh; /* Full height of the viewport */
-  overflow-y: auto; /* Enables vertical scroll if content overflows */
-  position: fixed; /* Fixed positioning relative to the viewport */
+  height: 100vh; 
+  overflow-y: auto;
+  position: fixed; 
   top: 0;
-  z-index: 5; /* Below the search bar */
-}
-
-.search-bar-container {
-  position: fixed; /* Fixed positioning relative to the viewport */
-  top: 0;
-  width: 20%; /* Set width to match the sidebar */
-  z-index: 10; /* Ensure it stacks above other content */
-  background-color: #2D3E50; /* Match the sidebar color */
+  z-index: 5; 
+  color: white;
 }
 
 .search-box {
   width: 80%;
   padding: 10px;
-  margin: 10px auto;
   border: none;
+  margin-right: 7%;
+  margin-left: 7%;
   border-radius: 5px;
-  color: #333;
-}
-.search-box::placeholder {
-  color: #999;
+  background-color: #333333;
+  color: white;
 }
 
 .content {
-  background-color: #F39C12;
+  background-color: #333333;
   width: 80%;
-  margin-left: 20%; /* Offset for the sidebar width */
-  height: 100vh; /* Full height of the viewport */
-  overflow-y: auto; /* Enables vertical scroll if content overflows */
-  position: relative; /* Relative to the normal document flow */
+  margin-left: 20%;
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  color: white;
 }
 
 .header {
@@ -61,7 +57,7 @@ body, html {
   text-align: center;
   color: white;
 }
-.main {
+.chat-box {
   height: 90%; /* Extra height to enable scrolling */
   padding: 20px;
   box-sizing: border-box;
@@ -77,7 +73,72 @@ body, html {
 }
 
 .selected-username{
-  background-color: #2980B9;
-  height: 200px;
+  background-color: black;
   color: White;
+}
+
+#results-container{
+  padding: 5px;
+}
+
+#results-container div{
+  padding: 10px;
+  background-color: #333333;
+  margin: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+#results-container div:hover{
+  background-color: #2980B9;
+}
+
+.selected-username{
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.selected-username li{
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  
+}
+
+.selected-username li:hover{
+  background-color: #333333;
+}
+
+.message-container{
+  width: 100%;
+  height: 8%;
+  
+}
+#message{
+  width: 80%;
+  height: 50%;
+  margin-left: 50px;
+  border-radius: 5px;
+  border-color: white;
+  border-width: 2px;
+  background-color: #333333;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#send-btn{
+  height: 60%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #7a7a7a;
+  cursor: pointer;
+  border: none;
+  color: white;
+}
+
+#send-btn:hover{
+  background-color: black;
 }
