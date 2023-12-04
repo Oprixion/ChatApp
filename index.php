@@ -1,4 +1,5 @@
 <?php include "templates/header.php"; ?>
+<h1>Chatapp</h1>
         <ul>
             <li>
                 <a href="signin.php"><strong>Sign In</strong></a>

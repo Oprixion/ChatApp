@@ -1,41 +1,33 @@
-<?php include "templates/header.php"; ?>
-<h1>Chatapp</h1>
-<?php
-    // Include your database configuration file
-    require "config.php";
+<?php 
+session_start(); // Start the session at the top
+include "templates/header.php"; 
 
-    $message = "";
+require "config.php";
 
-    if (isset($_POST['submit'])) {
-        try {
-            // Connect to the database
-            $connection = new PDO($dsn, $username, $password, $options);
+$message = "";
 
-            // Prepare and execute the query
-            $sql = "SELECT * FROM users WHERE username = :username";
-            
-            $statement = $connection->prepare($sql);
-            $statement->bindValue(':username', $_POST['username']);
-            $statement->execute();
+if (isset($_POST['submit'])) {
+    $connection = new PDO($dsn, $username, $password, $options);
 
-            $username = $statement->fetch(PDO::FETCH_ASSOC);
+    $sql = "SELECT * FROM users WHERE username = :username";
+    
+    $statement = $connection->prepare($sql);
+    $statement->bindValue(':username', $_POST['username']);
+    $statement->execute();
 
-            // Check if user exists and password matches
-            if ($username && password_verify($_POST['password'], $username['psw'])) {
-                // Redirect to another page
-                header("Location: chatscreen.php");
-                exit;
-            } else {
-                // Display an error message
-                $message = "Incorrect username or password";
-            }
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-        } catch(PDOException $error) {
-            echo "Error: " . $error->getMessage();
-        }
+    if ($user && password_verify($_POST['password'], $user['psw'])) {
+        $_SESSION['user'] = $user['username'];
+        header("Location: chatscreen.php");
+        exit;
+    } else {
+        $message = "Incorrect username or password";
     }
+}
 ?>
 
+<h1>Chatapp</h1>
 <h2>Sign in with your Username and Password</h2>
 <form method="post">
     <label for="username">User Name</label>
