@@ -27,6 +27,17 @@ body, html {
   color: white;
 }
 
+.sidebar a {
+  background: rgb(94, 0, 94);
+  border-radius: 5px;
+  color: white;
+  width: 80%;
+  padding: 10px;
+  margin-right: 7%;
+  margin-left: 7%;
+  text-decoration: none;
+}
+
 .search-box {
   width: 80%;
   padding: 10px;
@@ -54,7 +65,7 @@ body, html {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 10px 0;
+  padding: 20px 0;
   text-align: center;
   color: white;
 }
@@ -180,6 +191,3 @@ h3 {
   box-shadow: 5px 5px 5px 5px #7a7a7a;
 }
 
-.success {
-  background-color: black;
-}

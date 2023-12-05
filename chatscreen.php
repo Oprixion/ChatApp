@@ -21,6 +21,7 @@ if(isset($_SESSION['user'])) {
           <div id="results-container"></div>
           <ul id="selected-username" class="selected-username"></ul>
       </div>
+      <a href="logout.php">Logout</a>
         
     </div>
     <div class="content">
