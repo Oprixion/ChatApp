@@ -10,6 +10,7 @@ body, html {
   margin: 0;
   font-family: Arial, sans-serif;
 }
+
 .container {
   display: flex;
   min-height: 100vh;
@@ -142,3 +143,43 @@ body, html {
 #send-btn:hover{
   background-color: black;
 }
+
+/* index.php styles */
+
+header {
+  display: flex;
+  background-color: #2980B9;
+  justify-content: center;
+  padding: 10px;
+}
+
+body {
+  background-color: rgb(228, 227, 227);
+}
+
+h3 {
+  color: white;
+  margin: 10px;
+  font-size: 30px;
+}
+
+.sign {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 20em auto;
+}
+
+.sign div {
+  margin: 2px;
+  background-color: white;
+  text-decoration: none;
+  padding: 50px;
+  border-color: rgb(167, 167, 167);
+  border-style: solid;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px #7a7a7a;
+}
+
+/* signup.php styles */
+
