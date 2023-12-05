@@ -69,20 +69,42 @@ body, html {
   text-align: center;
   color: white;
 }
+
 .chat-box {
-  height: 90%; /* Extra height to enable scrolling */
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 90%;
+  background-color: #333333;
 }
 
-.message_container{
-  height: 10%;
-  background-color: aliceblue;
-  
+#receiving{
+  justify-content: flex-start;
+  align-items: flex-start; 
 }
+
+#sending{
+  justify-content: flex-end;
+  align-items: flex-end; 
+}
+
+#receiving, #sending {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+}
+
+#receiving p, #sending p {
+  margin-bottom: 5px; /* Adds a little space below the names */
+}
+
+#receiving div, #sending div {
+  background-color: black;
+  padding: 15px;
+  max-width: 45%;
+  border-radius: 10px;
+}
+
 
 .selected-username{
   background-color: black;
@@ -190,4 +212,5 @@ h3 {
   border-radius: 10px;
   box-shadow: 5px 5px 5px 5px #7a7a7a;
 }
+
 

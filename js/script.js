@@ -55,6 +55,7 @@ var currentUser;
 
 // Function to initialize WebSocket connection with dynamic username
 function initializeWebSocket(username) {
+    sessionStorage.setItem('username', username);
     currentUser = username;
     var socket = new WebSocket('ws://localhost:8080');
 
@@ -71,7 +72,7 @@ function initializeWebSocket(username) {
     socket.onmessage = function(event) {
       var data = JSON.parse(event.data);
       if (data.username && data.message) {
-          displayMessage(data.username, data.message);
+          displayMessage(data.username, data.message, 'receiver');
       }
     };
   
@@ -88,17 +89,51 @@ function initializeWebSocket(username) {
           };
           console.log('Sending message:', messageObject);
           socket.send(JSON.stringify(messageObject));
+          // Display the message on the sender's side as well
+          displayMessage(currentUser, message, "sender");
+
+          // Clear the input field after sending the message
+          messageInput.value = '';
       }
     };
     
 }
 
 // Function to display messages
-function displayMessage(username, message) {
-    var chatBox = document.getElementById('chatBox'); // Assuming you have a div with id 'chatBox'
-    var messageElement = document.createElement('div');
-    messageElement.textContent = username + ": " + message;
-    chatBox.appendChild(messageElement);
+function displayMessage(username, message, user) {
+  var chatBox = document.getElementById('chatBox');
+  var messageContainer = document.createElement('div')
+  var messageBox = document.createElement('div');
+  var nameBox = document.createElement('p');
+
+  if (user == "sender"){
+    messageContainer.id = 'sending';
+    messageBox.textContent = message;
+    nameBox.textContent = username;
+
+    messageContainer.appendChild(nameBox);
+    messageContainer.appendChild(messageBox);
+
+
+    chatBox.appendChild(messageContainer);
+  } else{
+    messageContainer.id = 'receiving';
+    messageBox.textContent = message;
+    nameBox.textContent = username;
+
+    messageContainer.appendChild(nameBox);
+    messageContainer.appendChild(messageBox);
+
+
+    chatBox.appendChild(messageContainer);
+  }
+  
 }
+
+
+
+
+
+
 
 

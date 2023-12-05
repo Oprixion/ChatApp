@@ -21,14 +21,15 @@ if(isset($_SESSION['user'])) {
           <div id="results-container"></div>
           <ul id="selected-username" class="selected-username"></ul>
       </div>
-      <a href="logout.php">Logout</a>
+      <a href = "logout.php" >Logout</a>
         
     </div>
     <div class="content">
         <div class="header" id="chat-header"></div>
         <div id="chatBox" class="chat-box">
-            <!-- Messages will be appended here -->
+            <!--Message goes here--> 
         </div>
+
         <div class = "message-container">
           <input type="text" id="message" placeholder="Enter message">
           <input id = "send-btn" type="button" onclick="sendMessage()" value="Send">
