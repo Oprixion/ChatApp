@@ -24,19 +24,31 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-<?php if (isset($_POST['submit']) && $statement) { ?>
- <?php echo escape($_POST['username']); ?> successfully added.
-<?php } ?>
-
 <?php include "templates/header.php"; ?>
-    <h1>Chatapp</h1>
-    <h2>Sign Up with your Username and Password</h2>
-    <form method="post">
-        <label for="username">User Name</label>
-        <input type="text" name="username" id="username">
-        <label for="password">password</label>
-        <input type="password" name="password" id="password">
-        <input type="submit" name="submit" value="Sign Up">
-    </form>
-    <a href="index.php">Back to home</a>
+<!DOCTYPE html>
+<body>
+    <header>
+        <h3>Chat App</h3>
+    </header>
+    <div class="sign">
+        <div>
+            <h2>Sign up with your Username and Password</h2>
+            <form method="post">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                <input type="submit" name="submit" value="Sign Up">
+            </form>
+            <br>
+            <a href="index.php">Back to home</a>
+            <br>
+            <br>
+            <?php if (isset($_POST['submit']) && $statement) { ?>
+            <?php echo escape($_POST['username']); ?> successfully added.
+            <?php } ?>
+        </div>        
+    </div>
+</body>
+</html>    
 <?php include "templates/footer.php"; ?>

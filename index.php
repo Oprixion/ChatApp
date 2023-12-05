@@ -1,14 +1,6 @@
 <?php include "templates/header.php"; ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat App</title>
-    
-</head>
-
 <body>
     <header>
         <h3>Chat App</h3>
@@ -44,7 +36,6 @@
                 }
             }
             ?>
-
             <h2>Sign in with your Username and Password</h2>
             <form method="post">
                 <label for="username">Username</label>
@@ -63,5 +54,4 @@
         </div>
 </body>
 </html>
-
 <?php include "templates/footer.php"; ?>

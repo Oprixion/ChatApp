@@ -144,7 +144,7 @@ body, html {
   background-color: black;
 }
 
-/* index.php styles */
+/*==================================================================================================*/
 
 header {
   display: flex;
@@ -175,11 +175,11 @@ h3 {
   background-color: white;
   text-decoration: none;
   padding: 50px;
-  border-color: rgb(167, 167, 167);
-  border-style: solid;
+  border: solid rgb(167, 167, 167);
   border-radius: 10px;
   box-shadow: 5px 5px 5px 5px #7a7a7a;
 }
 
-/* signup.php styles */
-
+.success {
+  background-color: black;
+}
