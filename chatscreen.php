@@ -31,8 +31,9 @@ if(isset($_SESSION['user'])) {
     <div id="chat" class="content">
         <button class="openbtn" onclick="openNav()">&#9776;</button>
         <div class="header" id="chat-header"></div>
-        <div id="chatBox" class="chat-box">
-            <!--Message goes here--> 
+
+        <div class = "chat-container" id = "chatContainer">
+            
         </div>
         
 

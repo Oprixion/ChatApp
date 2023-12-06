@@ -20,17 +20,23 @@ function searchUsernames() {
           var div = document.createElement('div');
           var userItem = document.createElement("li");
           div.textContent = user.username;
+          userItem.textContent = user.username;
+          userItem.id = user.username + "li";
 
           div.onclick = function() {
             document.getElementById('search-box').value = user.username; // Set the input value to the username clicked
-            userItem.textContent = user.username;
-
-            userItem.addEventListener('click', function() {
-              startChat(user.username);
-            });
-          
-            selectedUser.appendChild(userItem); // Display the selected username in the sidebar
             
+            var userExist = document.getElementById(user.username);
+            if (userExist){
+              //flash the user
+            } else{
+              userItem.addEventListener('click', function() {
+                startChat(user.username);
+              });
+              selectedUser.appendChild(userItem); // Display the selected username in the sidebar
+              
+            }
+          
             resultsContainer.innerHTML = ''; // Clear the results
           };
           resultsContainer.appendChild(div);
@@ -45,72 +51,118 @@ function searchUsernames() {
 var selectedUser = null;
 
 function startChat(name) {
-    var chatHeader = document.getElementById('chat-header');
-    var chatbox = document.createElement('div');
-    chatbox.id = name;
-    chatHeader.textContent = "Chatting with " + name;
-    selectedUser = name;
+  var chatHeader = document.getElementById('chat-header');
+  selectedUser = name;
+  showChatBox(name);
+  chatHeader.textContent = "Chatting with " + name;
 }
-// Global variable for the current user's username
 
+// Global variable for the current user's username
 var currentUser;
 
 // Function to initialize WebSocket connection with dynamic username
 function initializeWebSocket(username) {
-    currentUser = username;
-    var socket = new WebSocket('ws://localhost:8080');
+  currentUser = username;
+  var socket = new WebSocket('ws://localhost:8080');
+  socket.onopen = function(event) {
+      // Send the correct username to the server
+      var usernameMessage = JSON.stringify({ username: username });
+      socket.send(usernameMessage);
+  };
+  socket.onerror = function(error) {
+      console.error('WebSocket error:', error);
+  };
 
-    socket.onopen = function(event) {
-        // Send the correct username to the server
-        var usernameMessage = JSON.stringify({ username: username });
-        socket.send(usernameMessage);
-    };
+  socket.onmessage = function(event) {
+    var data = JSON.parse(event.data);
+    if (data.username && data.message) {
+      var userExist = document.getElementById(data.username+"li");
+      if(userExist){
+        //flash message
+        
+      }else{
+        var selectedUserList = document.getElementById('selected-username');
+        var userItem = document.createElement("li");
+        userItem.textContent = data.username;
+        userItem.id = data.username+"li";
 
-    socket.onerror = function(error) {
-        console.error('WebSocket error:', error);
-    };
+        userItem.addEventListener('click', function() {
+          startChat(data.username);
+        });
 
-    socket.onmessage = function(event) {
-      var data = JSON.parse(event.data);
-      if (data.username && data.message) {
-          displayMessage(data.username, data.message, 'receiver');
+        selectedUserList.appendChild(userItem);
       }
-    };
-  
-  
 
-    window.sendMessage = function() {
-      var messageInput = document.getElementById('message');
-      var message = messageInput.value;
-      if (selectedUser) {
-          var messageObject = {
-              sender: currentUser,
-              recipient: selectedUser,
-              message: message
-          };
-          console.log('Sending message:', messageObject);
-          socket.send(JSON.stringify(messageObject));
-          // Display the message on the sender's side as well
-          displayMessage(currentUser, message, "sender");
+      displayMessage(data.username, data.message, 'receiver');
+    }
+  };
 
-          // Clear the input field after sending the message
-          messageInput.value = '';
-      }
-    };
+
+  window.sendMessage = function() {
+    var messageInput = document.getElementById('message');
+    var message = messageInput.value;
+    if (selectedUser) {
+        var messageObject = {
+            sender: currentUser,
+            recipient: selectedUser,
+            message: message
+        };
+        console.log('Sending message:', messageObject);
+        socket.send(JSON.stringify(messageObject));
+        // Display the message on the sender's side as well
+        displayMessage(currentUser, message, "sender");
+
+        // Clear the input field after sending the message
+        messageInput.value = '';
+    }
+  };
     
+}
+
+function showChatBox(username){
+  var chatBox = document.getElementById(username);
+  var chatBoxAll = document.getElementsByClassName('chat-box');
+  var chatContainer = document.getElementById('chatContainer');
+
+  // Loop through the elements and change their style
+  for (var i = 0; i < chatBoxAll.length; i++) {
+    chatBoxAll[i].style.display = 'none'; 
+  }
+
+  if(chatBox){
+    chatBox.style.display = 'block';
+  }else{
+    chatBox = document.createElement('div');
+    chatBox.id = username
+    chatBox.className = 'chat-box';
+    chatContainer.appendChild(chatBox);
+  }
 }
 
 // Function to display messages
 function displayMessage(username, message, user) {
-  var chatBox = document.getElementById('chatbox');
   var messageContainer = document.createElement('div');
   var messageBox = document.createElement('div');
   var nameBox = document.createElement('p');
+  var chatContainer = document.getElementById('chatContainer');
 
   if (user == "sender") {
       messageContainer.id = 'sending';
+      var chatBox = document.getElementById(selectedUser);
   } else {
       messageContainer.id = 'receiving';
+      var chatBox = document.getElementById(username);
+      if (chatBox){
+        
+        chatContainer.appendChild(chatBox);
+      } else{
+        chatBox = document.createElement('div');
+        chatBox.id = username;
+        chatBox.className = 'chat-box';
+        chatBox.style.display = 'none';
+        chatContainer.appendChild(chatBox);
+      }
+
   }
 
   messageBox.textContent = message;
