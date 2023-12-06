@@ -291,3 +291,16 @@ opacity: 0;
 .toggle-emoji:hover {
   background-color: rgb(153, 1, 153)
 }
+
+@media only screen and (max-width: 480px) {
+  #message {width: 60%;}
+}
+
+@media only screen and (min-width: 481px)
+and (max-width: 768px){
+  #message {width: 60%;}
+}
+
+@media only screen and (min-width: 769px){
+  #message {width: 70%;}
+}
