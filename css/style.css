@@ -18,16 +18,20 @@ body, html {
 
 .sidebar {
   background-color: black;
-  width: 20%;
-  height: 100vh; 
+  width: 0;
+  height: 100%; 
+  overflow-x: hidden;
   overflow-y: auto;
   position: fixed; 
   top: 0;
-  z-index: 5; 
+  left: 0;
+  z-index: 1; 
   color: white;
+  padding-top: 40px;
+  transition: 0.5s;
 }
 
-.sidebar a {
+.sidebar a:last-child {
   background: rgb(94, 0, 94);
   border-radius: 5px;
   color: white;
@@ -36,6 +40,43 @@ body, html {
   margin-right: 7%;
   margin-left: 7%;
   text-decoration: none;
+  transition: 0.3s;
+}
+
+.sidebar a:last-child:hover {
+  background: rgb(153, 1, 153);
+}
+
+.openbtn {
+  position: absolute;
+  font-size: 25px;
+  cursor: pointer;
+  background-color: #2980B9;
+  padding: 5px;
+  color: white;
+  border: none;
+  z-index: 101;
+  transition: 0.3s;
+}
+
+.openbtn:hover {
+  color: rgb(177, 177, 177);
+}
+
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.sidebar .closebtn:hover {
+  color: rgb(177, 177, 177);
 }
 
 .search-box {
@@ -51,18 +92,21 @@ body, html {
 
 .content {
   background-color: #333333;
-  width: 80%;
-  margin-left: 20%;
+  width: 100%;
+  margin-left: 0;
   height: 100vh;
   overflow-y: auto;
-  position: relative;
+  position: sticky;
   color: white;
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding-left: 5px;
 }
 
 .header {
   background-color: #2980B9;
+  height: 10px;
   width: 100%;
-  position: sticky;
+  position: absolute;
   top: 0;
   z-index: 100;
   padding: 20px 0;
