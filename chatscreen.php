@@ -13,8 +13,8 @@ if(isset($_SESSION['user'])) {
 
 ?>
 
+
 <div class="container">
-    
     <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <h1 class='title'>ChatAPP</h1>
@@ -25,8 +25,6 @@ if(isset($_SESSION['user'])) {
       </div>
       <a href = "logout.php" >Logout</a>
     </div>
-
-    
 
     <div id="chat" class="content">
         <button class="openbtn" onclick="openNav()">&#9776;</button>
