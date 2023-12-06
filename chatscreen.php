@@ -31,7 +31,7 @@ if(isset($_SESSION['user'])) {
     <div id="chat" class="content">
         <button class="openbtn" onclick="openNav()">&#9776;</button>
         <div class="header" id="chat-header"></div>
-        <div id="chatBox" class="chat-box">
+        <div class = "chat-container" id = "chatContainer">
             <div id="drawer" class="emoji-drawer hidden"> 
                 <div class="emoji" onclick="addEmoji(this.innerHTML)">😀</div>
                 <div class="emoji" onclick="addEmoji(this.innerHTML)">😃</div>

@@ -197,10 +197,5 @@ function addEmoji(emoji) {
 
 function toggleEmojiDrawer() {
   let drawer = document.getElementById('drawer');
-  
-  if (drawer.classList.contains('hidden')) {
-    drawer.classList.remove('hidden');
-  } else {
-    drawer.classList.add('hidden');
-  }
+  drawer.classList.toggle('hidden');
 }
