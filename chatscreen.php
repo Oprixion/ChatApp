@@ -25,10 +25,13 @@ if(isset($_SESSION['user'])) {
         
     </div>
     <div class="content">
-        <div class="header" id="chat-header"></div>
+        <div class="header" id="chat-header"> Select a user to start chatting!</div>
+    
+        
         <div id="chatBox" class="chat-box">
             <!--Message goes here--> 
         </div>
+        
 
         <div class = "message-container">
           <input type="text" id="message" placeholder="Enter message">

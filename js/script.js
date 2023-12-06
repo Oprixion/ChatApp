@@ -46,8 +46,10 @@ var selectedUser = null;
 
 function startChat(name) {
     var chatHeader = document.getElementById('chat-header');
+    var chatbox = document.createElement('div');
+    chatbox.id = name;
     chatHeader.textContent = "Chatting with " + name;
-    selectedUser = name; // Update the selectedUser variable
+    selectedUser = name;
 }
 // Global variable for the current user's username
 
@@ -55,7 +57,6 @@ var currentUser;
 
 // Function to initialize WebSocket connection with dynamic username
 function initializeWebSocket(username) {
-    sessionStorage.setItem('username', username);
     currentUser = username;
     var socket = new WebSocket('ws://localhost:8080');
 
@@ -101,33 +102,27 @@ function initializeWebSocket(username) {
 
 // Function to display messages
 function displayMessage(username, message, user) {
-  var chatBox = document.getElementById('chatBox');
-  var messageContainer = document.createElement('div')
+  var chatBox = document.getElementById('chatbox');
+  var messageContainer = document.createElement('div');
   var messageBox = document.createElement('div');
   var nameBox = document.createElement('p');
 
-  if (user == "sender"){
-    messageContainer.id = 'sending';
-    messageBox.textContent = message;
-    nameBox.textContent = username;
-
-    messageContainer.appendChild(nameBox);
-    messageContainer.appendChild(messageBox);
-
-
-    chatBox.appendChild(messageContainer);
-  } else{
-    messageContainer.id = 'receiving';
-    messageBox.textContent = message;
-    nameBox.textContent = username;
-
-    messageContainer.appendChild(nameBox);
-    messageContainer.appendChild(messageBox);
-
-
-    chatBox.appendChild(messageContainer);
+  if (user == "sender") {
+      messageContainer.id = 'sending';
+  } else {
+      messageContainer.id = 'receiving';
   }
+
+  messageBox.textContent = message;
+  nameBox.textContent = username;
+
+  messageContainer.appendChild(nameBox);
+  messageContainer.appendChild(messageBox);
   
+  chatBox.appendChild(messageContainer);
+
+  // Automatically scroll to the bottom for every message
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 
