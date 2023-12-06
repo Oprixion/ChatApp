@@ -135,8 +135,6 @@ function displayMessage(username, message, user) {
 function openNav() {
   var screenWidth = window.innerWidth || document.documentElement.clientWidth;
 
-  console.log("Screen Width:", screenWidth);
-
   var mySidebar = document.getElementById("mySidebar");
   var main = document.getElementById("main");
 
