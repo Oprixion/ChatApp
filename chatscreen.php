@@ -31,15 +31,28 @@ if(isset($_SESSION['user'])) {
     <div id="chat" class="content">
         <button class="openbtn" onclick="openNav()">&#9776;</button>
         <div class="header" id="chat-header"></div>
-
-        <div class = "chat-container" id = "chatContainer">
-            
+        <div id="chatBox" class="chat-box">
+            <div id="drawer" class="emoji-drawer hidden"> 
+                <div class="emoji" onclick="addEmoji(this.innerHTML)">😀</div>
+                <div class="emoji" onclick="addEmoji(this.innerHTML)">😃</div>
+                <div class="emoji" onclick="addEmoji(this.innerHTML)">😄</div>
+                <div class="emoji" onclick="addEmoji(this.innerHTML)">😁</div>
+                <div class="emoji" onclick="addEmoji(this.innerHTML)">😆</div>
+                <div class="emoji" onclick="addEmoji(this.innerHTML)">😆</div>
+                <div class="emoji" onclick="addEmoji(this.innerHTML)">😅</div>
+                <div class="emoji" onclick="addEmoji(this.innerHTML)">😂</div>
+                <div class="emoji" onclick="addEmoji(this.innerHTML)">🤣</div>
+            </div>
+            <!--Message goes here--> 
         </div>
         
 
         <div class = "message-container">
-          <input type="text" id="message" placeholder="Enter message">
-          <input id = "send-btn" type="button" onclick="sendMessage()" value="Send">
+            <input type="text" id="message" placeholder="Enter message">
+            
+            <button class="toggle-emoji" onclick="toggleEmojiDrawer()">☺</button>
+            
+            <input id="send-btn" type="button" onclick="sendMessage()" value="Send">
         </div>
     </div>
 </div>

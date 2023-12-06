@@ -188,3 +188,19 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("chat").style.marginLeft = "0";
 }
+
+function addEmoji(emoji) {
+  let inputEle = document.getElementById('message');
+  
+  message.value += emoji;
+}
+
+function toggleEmojiDrawer() {
+  let drawer = document.getElementById('drawer');
+  
+  if (drawer.classList.contains('hidden')) {
+    drawer.classList.remove('hidden');
+  } else {
+    drawer.classList.add('hidden');
+  }
+}

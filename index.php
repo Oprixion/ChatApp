@@ -6,7 +6,6 @@
         <h3>Chat App</h3>
     </header>
     <div class="sign">
-        <h2>Explore New Possibilities</h2>
         <div>
         <?php 
             session_start(); // Start the session at the top
