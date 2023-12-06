@@ -148,10 +148,16 @@ body, html {
   margin-bottom: 5px; /* Adds a little space below the names */
 }
 
-#receiving div, #sending div {
+#receiving div  {
   background-color: black;
   padding: 15px;
-  max-width: 45%;
+  max-width: 50%;
+  border-radius: 10px;
+}
+#sending div{
+  background-color: #2980B9;
+  padding: 15px;
+  max-width: 50%;
   border-radius: 10px;
 }
 
