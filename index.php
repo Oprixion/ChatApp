@@ -1,9 +1,9 @@
 <?php include "templates/header.php"; ?>
 
-<!DOCTYPE html>
-<body>
-    <header>
-        <h3>Chat App</h3>
+
+<body class = 'signin-body'>
+    <header class = 'index-title'>
+        <h3>ChatAPP</h3>
     </header>
     <div class="sign">
         <div>
@@ -52,5 +52,5 @@
             </div>
         </div>
 </body>
-</html>
+
 <?php include "templates/footer.php"; ?>

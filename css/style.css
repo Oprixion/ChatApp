@@ -250,17 +250,20 @@ h3 {
   flex-direction: row;
   justify-content: space-evenly;
   margin: 20em auto;
+  
 }
 
 .sign div {
   margin: 2px;
-  background-color: white;
+  background-color: #1f1e1e;
+  color: white;
   text-decoration: none;
   padding: 50px;
   border: solid rgb(167, 167, 167);
   border-radius: 10px;
   box-shadow: 5px 5px 5px 5px #7a7a7a;
 }
+
 .emoji-drawer {
   display: grid;
   position: absolute;
@@ -345,3 +348,12 @@ and (max-width: 768px){
 .flashing-blue {
   animation: flashBlue 2s; /* Run the animation only once */
 }
+
+.index-title {
+  background-color: black;
+}
+
+.signin-body{
+  background-color: #333333;
+}
+
