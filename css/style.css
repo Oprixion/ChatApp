@@ -293,14 +293,39 @@ opacity: 0;
 }
 
 @media only screen and (max-width: 480px) {
-  #message {width: 60%;}
+  #message {
+    width: 60%;
+  }
+  .sign {
+    width: 40%;
+  }
+  #password {
+    margin-bottom: 10px;
+  }
 }
 
 @media only screen and (min-width: 481px)
 and (max-width: 768px){
-  #message {width: 60%;}
+  #message {
+    width: 60%;
+  }
+  .sign {
+    width: 60%;
+  }
+  #password {
+    margin-bottom: 10px;
+  }
+
 }
 
 @media only screen and (min-width: 769px){
-  #message {width: 70%;}
+  #message {
+    width: 70%;
+  }
+  .sign {
+    width: 80%;
+  }
+  #password {
+    margin-bottom: 10px;
+  }
 }
