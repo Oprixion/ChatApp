@@ -14,7 +14,9 @@ if(isset($_SESSION['user'])) {
 ?>
 
 <div class="container">
-    <div class="sidebar">
+    
+    <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <h1 class='title'>ChatAPP</h1>
       <div class="search-bar-container">
           <input type="text" id="search-box" class="search-box" placeholder="Search by Username" oninput="searchUsernames()">
@@ -22,12 +24,13 @@ if(isset($_SESSION['user'])) {
           <ul id="selected-username" class="selected-username"></ul>
       </div>
       <a href = "logout.php" >Logout</a>
-        
     </div>
-    <div class="content">
-        <div class="header" id="chat-header"> Select a user to start chatting!</div>
+
     
-        
+
+    <div id="chat" class="content">
+        <button class="openbtn" onclick="openNav()">&#9776;</button>
+        <div class="header" id="chat-header"></div>
         <div id="chatBox" class="chat-box">
             <!--Message goes here--> 
         </div>
