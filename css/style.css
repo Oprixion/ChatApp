@@ -114,7 +114,7 @@ body, html {
 }
 
 .chat-container{
-  width: 80%;
+  width: 100%;
   height: 85%;
   float: right;
 }
@@ -227,7 +227,6 @@ body, html {
   background-color: black;
 }
 
-/*==================================================================================================*/
 
 header {
   display: flex;
@@ -336,4 +335,13 @@ and (max-width: 768px){
   #password {
     margin-bottom: 10px;
   }
+}
+
+@keyframes flashBlue {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: #2980B9 }
+}
+
+.flashing-blue {
+  animation: flashBlue 2s; /* Run the animation only once */
 }

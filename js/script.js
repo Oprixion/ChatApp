@@ -28,7 +28,7 @@ function searchUsernames() {
             
             var userExist = document.getElementById(user.username);
             if (userExist){
-              //flash the user
+              
             } else{
               userItem.addEventListener('click', function() {
                 startChat(user.username);
@@ -55,6 +55,7 @@ function startChat(name) {
   selectedUser = name;
   showChatBox(name);
   chatHeader.textContent = "Chatting with " + name;
+  closeNav();
 }
 
 // Global variable for the current user's username
@@ -78,7 +79,6 @@ function initializeWebSocket(username) {
     if (data.username && data.message) {
       var userExist = document.getElementById(data.username+"li");
       if(userExist){
-        //flash message
         
       }else{
         var selectedUserList = document.getElementById('selected-username');
@@ -92,7 +92,6 @@ function initializeWebSocket(username) {
 
         selectedUserList.appendChild(userItem);
       }
-
       displayMessage(data.username, data.message, 'receiver');
     }
   };
@@ -186,7 +185,7 @@ function openNav() {
   var main = document.getElementById("main");
 
   if (screenWidth <= 768) {
-    mySidebar.style.width = "40%";
+    mySidebar.style.width = "100%";
     main.style.marginLeft = "0";
   } else if (screenWidth > 768 && screenWidth < 1089){
     mySidebar.style.width = "30%";
